@@ -18,6 +18,7 @@ def factors(n: int) -> dict:
     print_powers(init_n, powers)
     return powers
 
+
 def phi(n: int) -> int:
     """
     phi(p^a) = p^a - p^{a-1}
@@ -28,10 +29,12 @@ def phi(n: int) -> int:
     for base, exp in powers.items():
         if exp == 1:
             cur_phi = base - 1
-            print(f'phi({base}) = {base} - 1 = {cur_phi}')
+            print(f"phi({base}) = {base} - 1 = {cur_phi}")
         else:
             cur_phi = pow(base, exp) - pow(base, exp - 1)
-            print(f'phi({base}^{exp}) = {base}^{exp} - {base}^{exp - 1} = {pow(base, exp)} - {pow(base, exp-1)} = {cur_phi}')
+            print(
+                f"phi({base}^{exp}) = {base}^{exp} - {base}^{exp - 1} = {pow(base, exp)} - {pow(base, exp-1)} = {cur_phi}"
+            )
 
         phi *= cur_phi
         phis.append(str(cur_phi))

@@ -11,10 +11,11 @@ from helpers.alphabet import russian_alphabet
 from helpers.log import pretty_print
 from helpers.euclid import euclid
 
+
 def test():
-    tests = [(32, 43, 65), (91, 82, 73), (72, 83, 93)]
+    tests = [(32, 43, 65), (91, 82, 73), (72, 83, 93), (11, 35, 1)]
     for i in range(len(tests)):
-        print(f'{russian_alphabet[i]})')
+        print(f"{russian_alphabet[i]})")
         a, b, c = tests[i]
 
         if a > b:
@@ -23,25 +24,23 @@ def test():
             b, c = c, b
         if a > b:
             a, b = b, a
-        pretty_print(f'gcd({a},{b},{c}) = ?')
+        pretty_print(f"gcd({a},{b},{c}) = ?")
 
-        pairs = [(a, b), (b,c), (a,c)]
+        pairs = [(a, b), (b, c), (a, c)]
         gcds = []
-        for first,second in pairs:
+        for first, second in pairs:
             cur_gcd = euclid(first, second).nod
             assert cur_gcd == gcd(first, second)
             gcds.append(str(cur_gcd))
 
-        pretty_print('gcds = ' + (', '.join(gcds)))
+        pretty_print("gcds = " + (", ".join(gcds)))
 
-        if any(cur_gcd == '1' for cur_gcd in gcds):
-            pretty_print(f'gcd({a}, {b}, {c}) = 1, числа взаимно-простые')
+        if any(cur_gcd == "1" for cur_gcd in gcds):
+            pretty_print(f"gcd({a}, {b}, {c}) = 1, числа взаимно-простые")
         else:
             double_nod = euclid(int(gcds[0]), c).nod
             assert double_nod == gcd(a, b, c)
-            pretty_print(f'gcd({a}, {b}, {c}) = {double_nod}, числа не взаимно-простые')
+            pretty_print(f"gcd({a}, {b}, {c}) = {double_nod}, числа не взаимно-простые")
+
 
 test()
-
-
-
